@@ -8,7 +8,7 @@ from image_downloader import download
 DISCORD_TOKEN = "Nzg1NTcwMDc5NTMzNDMyODky.X85xJg.n0YAfX14qhwpvG61gZi7Mkb_P0o"
 DESC = "Bot for shitting and farting"
 
-log_message = "{user}: {command}, {time}"
+log_message = "{user} -- {command} -- {time}"
 
 bot = commands.Bot(command_prefix = "*", description=DESC)
 
@@ -27,7 +27,7 @@ async def schedule(ctx,month="December"):
 
 @bot.command()
 async def upload_schedule(ctx,month,url):
-	print(type(ctx.message.author))
+	print(log_message.format(user=ctx.message.author,command="upload_schedule",time=date.today()))
 	if str(ctx.message.author)== "LOUIS#3375" or str(ctx.message.author)=="arrow#7963":
 		schedules[month] = url
 		download(url,month)
@@ -37,17 +37,18 @@ async def upload_schedule(ctx,month,url):
 
 @bot.command()
 async def day(ctx):
+	print(log_message.format(user=ctx.message.author,command="day",time=date.today()))
 	asdf = date.today()
 	await ctx.send(f"The day is {asdf}")
 
 @bot.command()
 async def updates(ctx, num=1):
+	print(log_message.format(user=ctx.message.author,command="updates",time=date.today()))
 	NewsFeed = feedparser.parse("https://www.northcolonie.org/feed")
 	for i in range(int(num)):
 		title = NewsFeed.entries[i]['title']
 		published = NewsFeed.entries[i].published
 		link = NewsFeed.entries[i]['links'][0]['href']
-		print(NewsFeed.entries[i])
 		embed = Embed(
 			title=title,
 			url=link,
@@ -57,5 +58,6 @@ async def updates(ctx, num=1):
 
 @bot.command()
 async def shaker(ctx):
+	print(log_message.format(user=ctx.message.author,command="shaker",time=date.today()))
 	await ctx.send(file=discord.File("images/bluebison.jpg"))
 bot.run(DISCORD_TOKEN)
