@@ -1,16 +1,14 @@
 import discord
 from discord.embeds import Embed
 from discord.ext import commands
-
 import feedparser
-
 from datetime import date
-
 from image_downloader import download
+
 DISCORD_TOKEN = "Nzg1NTcwMDc5NTMzNDMyODky.X85xJg.n0YAfX14qhwpvG61gZi7Mkb_P0o"
 DESC = "Bot for shitting and farting"
 
-schedules = {}
+log_message = "{user}: {command}, {time}"
 
 bot = commands.Bot(command_prefix = "*", description=DESC)
 
@@ -20,6 +18,7 @@ async def on_ready():
 
 @bot.command()
 async def schedule(ctx,month="December"): 
+	print(log_message.format(user=ctx.message.author,command="schedule",time=date.now()))
 	try:
 		await ctx.send(file=discord.File(f"images/schedules/{month}.png"))
 	except:
