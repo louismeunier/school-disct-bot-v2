@@ -20,7 +20,7 @@ class bcolors:
 DISCORD_TOKEN = "Nzg1NTcwMDc5NTMzNDMyODky.X85xJg.n0YAfX14qhwpvG61gZi7Mkb_P0o"
 DESC = "Bot for shitting and farting"
 
-log_message = "   \033[96m{user}\033[0m   ---   \033[95m{command}\033[0m   @   \033[93m{time}\033[0m"
+log_message = "   \033[94m{user}\033[0m   ---   \033[92m{command}\033[0m   @   \033[93m{time}\033[0m"
 
 bot = commands.Bot(command_prefix = "*", description=DESC)
 
