@@ -4,7 +4,8 @@ from discord.ext import commands
 import feedparser
 from datetime import date
 from image_downloader import download
-
+import requests
+import json
 
 class bcolors:
     HEADER = '\033[95m'
@@ -67,6 +68,31 @@ async def updates(ctx, num=1):
 			description=f"Published: *{published}*"
 			)
 		await ctx.send(embed=embed)
+
+@bot.command()
+async def covid(ctx, time="daily"):
+	print(log_message.format(user=ctx.message.author,command="covid",time=date.today()))
+	r=requests.get("https://api.covidtracking.com/v1/us/daily.json")
+	text = json.loads(r.text)[0]
+	totalPos = text['positive']
+	totalHosp = text["hospitalizedCurrently"]
+	totalDeaths = text["death"]
+	incDeaths = text['deathIncrease']
+	incHosp = text["hospitalizedIncrease"]
+	incPos = text["positiveIncrease"]
+	embed = Embed(
+		title = "COVID Update",
+		url="https://covidtracking.com/data/api",
+
+		)
+	embed.add_field(name="New Cases",value=incPos,inline=True)
+	embed.add_field(name="New Hospitilizations",value=incHosp,inline=True)
+	embed.add_field(name="New Deaths",value=incDeaths,inline=True)
+	embed.add_field(name="Total Cases",value=totalPos,inline=True)
+	embed.add_field(name="Total Hospitilizations",value=totalHosp,inline=True)
+	embed.add_field(name="Total Deaths",value=totalDeaths,inline=True)
+
+	await ctx.send(embed=embed)
 
 @bot.command()
 async def shaker(ctx):
