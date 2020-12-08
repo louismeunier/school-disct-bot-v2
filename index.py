@@ -5,10 +5,22 @@ import feedparser
 from datetime import date
 from image_downloader import download
 
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 DISCORD_TOKEN = "Nzg1NTcwMDc5NTMzNDMyODky.X85xJg.n0YAfX14qhwpvG61gZi7Mkb_P0o"
 DESC = "Bot for shitting and farting"
 
-log_message = "{user} -- {command} -- {time}"
+log_message = "   \033[96m{user}\033[0m   ---   \033[95m{command}\033[0m   @   \033[93m{time}\033[0m"
 
 bot = commands.Bot(command_prefix = "*", description=DESC)
 
