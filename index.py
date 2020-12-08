@@ -18,7 +18,7 @@ async def on_ready():
 
 @bot.command()
 async def schedule(ctx,month="December"): 
-	print(log_message.format(user=ctx.message.author,command="schedule",time=date.now()))
+	print(log_message.format(user=ctx.message.author,command="schedule",time=date.today()))
 	try:
 		await ctx.send(file=discord.File(f"images/schedules/{month}.png"))
 	except:
