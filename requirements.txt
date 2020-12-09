@@ -1,4 +1,4 @@
-discord
+"discord.py[voice]"
 feedparser
 requests
 google-api-python-client

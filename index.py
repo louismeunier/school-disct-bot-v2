@@ -3,10 +3,11 @@ from discord.embeds import Embed
 from discord.ext import commands
 import feedparser
 from datetime import date
+import time
 from image_downloader import download
 import requests
 import json
-from calendar_api import get_current_day,get_upcoming_events
+from calendar_api_things.calendar_api import get_current_day,get_upcoming_events
 
 class bcolors:
     HEADER = '\033[95m'
@@ -116,6 +117,22 @@ async def calendar(ctx,options):
 """
 	get_upcoming_events(int(options))
 	await ctx.send("placehollder")
+
+@bot.command()
+async def shutup(ctx):
+	try:
+		channel = ctx.author.voice.channel
+		await channel.connect()
+		vc = ctx.voice_client
+		vc.play(discord.FFmpegPCMAudio('shutupbitch.mp3'))
+		time.sleep(5)
+		await vc.disconnect()
+	except:
+		await ctx.send("Something happened idk what thoughhhh :man_shrugging:")
+
+
+		
+	
 @bot.command()
 async def shaker(ctx):
 	print(log_message.format(user=ctx.message.author,command="shaker",time=date.today()))
