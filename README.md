@@ -1,6 +1,3 @@
-**School Bot**
+** A Discord Bot **
 
-Idk man I was bored me.
-
-
-Buy me shit @louismeunier123@gmail.com
+Started off as Discord bot to get news and data from my school, but now is a large collection of utility and api-related functions.

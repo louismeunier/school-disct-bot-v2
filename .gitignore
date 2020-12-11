@@ -1,3 +1,9 @@
 .DS_Store
 __pycache__
-
+logs.txt
+secrets.json
+utils/calendar_api/credentials.json
+utils/calendar_api/token.pickle
+utils/resources/images/schedules/*
+utils/resources/images/bluebison.jpg
+utils/resources/images/qr_code.png
