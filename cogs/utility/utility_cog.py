@@ -135,6 +135,24 @@ class UtilityCog(commands.Cog):
 		"""
 		await ctx.send(f"Discord version *{discord.__version__}*")
 
+	@commands.command(name="cat")
+	async def cat(self,ctx,code):
+		"""
+		Uses https://http.cat/[status_code] to get a cat picture for a number of possible http status code. 
+		This probably shouldnt be in utility, but I'm too lazy to make a whole new cog right now...
+		"""
+		codes = ["100","101","102","200","201","202","204","206","207","300","301","302","303","304","305","307","400","401","402","403","404","405","406","408","409","410","411","412","413","414","415","416","417","418","420","421","422","423","424","425","426","429","431","444","450","451","499","500","501","502","503","504","506","507","508","509","510","511","599"]
+		if code not in codes:
+			self.log("cat",ctx.message.author, True)
+			await ctx.send(self.error.format(error="Invalid code"))
+		else:
+			r = requests.get(f"https://http.cat/{code}")
+			resp_bytes = r.content
+			with open("utils/resources/images/cat_html.png","wb") as f:
+				f.write(resp_bytes)
+			f.close()
+			await ctx.send(file=discord.File("utils/resources/images/cat_html.png"))
+			self.log("cat",ctx.message.author)
 
 def setup(bot):
 	bot.add_cog(UtilityCog(bot))
