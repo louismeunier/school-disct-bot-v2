@@ -30,3 +30,13 @@ To use this repository:
 [] Run ```python3 -m pip install -r requirements.txt```
 
 I'm not 100% sure if this bot could work in python2, but it was developed in python 3.8.3, so all the behavior is based around that.
+
+
+
+
+
+*FUTURE*
+
+[] Spotify API full implementation
+
+[] "Fun" cog with less useful but still cool function
